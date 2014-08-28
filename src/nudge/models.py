@@ -17,7 +17,9 @@ class BatchPushItem(models.Model):
         return unicode(self.version)
 
     def version_type_string(self):
-        return VERSION_TYPE_LOOKUP[self.version.type]
+        #return VERSION_TYPE_LOOKUP[self.version.type]
+        #return 'version type removed'
+        return self.version.revision.comment
 
 
 def default_batch_start_date():
@@ -71,4 +73,4 @@ class BatchItem(models.Model):
         return u'%s' % self.version.object_repr
 
 
-from nudge.utils import VERSION_TYPE_LOOKUP
+#from nudge.utils import VERSION_TYPE_LOOKUP

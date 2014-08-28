@@ -9,12 +9,12 @@ def submit_batch_row(context):
     """
     Displays the row of buttons for delete and save.
     """
-    opts = context['opts']
     change = context['change']
     is_popup = context['is_popup']
     save_as = context['save_as']
+
     return {
-        'onclick_attrib': (opts.get_ordered_objects() and change
+        'onclick_attrib': (change
                            and 'onclick="submitOrderForm();"' or ''),
         'show_delete_link': (not is_popup and context['has_delete_permission']
                              and (change)),

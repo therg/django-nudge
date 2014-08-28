@@ -57,7 +57,7 @@ def serialize_objects(key, batch_push_items):
 
     for batch_item in batch_push_items:
         version = batch_item.version
-        if version.type < 2 and version.object:
+        if version.object:
             updated_obj=version.object
             batch_objects.append(updated_obj)
             options = updated_obj._meta
@@ -77,10 +77,11 @@ def serialize_objects(key, batch_push_items):
                         dependencies.append(related_obj)
 
         else:
-            app_label = batch_item.version.content_type.app_label
-            model_label = batch_item.version.content_type.model
-            object_id = batch_item.version.object_id
-            deletions.append((app_label, model_label, object_id))
+            pass
+            # app_label = batch_item.version.content_type.app_label
+            # model_label = batch_item.version.content_type.model
+            # object_id = batch_item.version.object_id
+            # deletions.append((app_label, model_label, object_id))
 
     batch_items_serialized = serializers.serialize('json', batch_objects)
     dependencies_serialized = serializers.serialize('json', dependencies)

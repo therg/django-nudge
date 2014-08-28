@@ -1,5 +1,6 @@
 from datetime import datetime
-from django.conf.urls.defaults import patterns, url
+from functools import update_wrapper
+from django.conf.urls import patterns, url
 from django.contrib import admin
 from django.contrib.admin.util import unquote
 from django.contrib.auth.admin import csrf_protect_m
@@ -8,7 +9,6 @@ from django.forms.formsets import all_valid
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.response import TemplateResponse
-from django.utils.functional import update_wrapper
 from django.utils.safestring import mark_safe
 from nudge import client
 from nudge import utils

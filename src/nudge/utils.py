@@ -10,7 +10,7 @@ from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from nudge.models import Batch, BatchPushItem
 from nudge.exceptions import CommandException
-from reversion.models import Version, Revision, VERSION_TYPE_CHOICES
+from reversion.models import Version, Revision #, VERSION_TYPE_CHOICES
 from reversion import get_for_object
 
 try:
@@ -18,7 +18,7 @@ try:
 except ImportError:
     import json
 
-VERSION_TYPE_LOOKUP = dict(VERSION_TYPE_CHOICES)
+#VERSION_TYPE_LOOKUP = dict(VERSION_TYPE_CHOICES)
 
 
 class PotentialBatchItem(object):
@@ -43,7 +43,9 @@ class PotentialBatchItem(object):
                          self.pk))
 
     def version_type_string(self):
-        return VERSION_TYPE_LOOKUP[self.version.type]
+        #return VERSION_TYPE_LOOKUP[self.version.type]
+        return self.version.revision.comment
+        #return 'version type removed!'
 
 
 def inflate_batch_item(key, batch):
