@@ -37,7 +37,6 @@ def versions(keys):
         if versions:
             latest = versions[0]
             results[key] = (latest.pk,
-                            latest.type,
                             latest.revision
                             .date_created.strftime('%b %d, %Y, %I:%M %p'))
         else:
